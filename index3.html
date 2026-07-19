@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090a" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="description" content="鄭樺駿 Gary Chen 的履歷網站：智慧物流系統開發（WMS/WCS/WES/LMS）、企業 AI 助手（LLM / GraphRAG）、全端開發與演算法最佳化研究。" />
+  <meta property="og:title" content="鄭樺駿 Gary Chen — 軟體工程師履歷" />
+  <meta property="og:description" content="資訊管理碩士，具備 Python、PHP / Laravel、Java、Vue.js、資料庫、深度學習／LLM 與智慧物流演算法研究經驗。" />
+  <meta property="og:type" content="website" />
+  <title>鄭樺駿 Gary Chen — 軟體工程師履歷</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2308090a'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='30' font-weight='800' fill='%236366f1' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090a;
+      --card: #111214;
+      --card-hover: #16171a;
+      --border: rgba(255,255,255,.09);
+      --border-hover: rgba(255,255,255,.16);
+      --text: #f4f5f7;
+      --dim: #9a9ba3;
+      --faint: #6b6d76;
+      --accent: #6366f1;
+      --accent-2: #818cf8;
+      --accent-soft: rgba(99,102,241,.14);
+      --radius: 14px;
+      --sans: Inter, 'Noto Sans TC', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      visibility: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+    ::selection { background: var(--accent-soft); color: var(--accent-2); }
+
+    header { position: sticky; top: 0; z-index: 20; background: rgba(8,9,10,.78); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav { height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; letter-spacing: -.01em; }
+    .brand .mark { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-2); font-weight: 800; font-size: 15px; }
+    nav.links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 500; color: var(--dim); }
+    nav.links a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .lang-btn { padding: 7px 11px; font-size: 13px; font-weight: 700; color: var(--dim); background: transparent; border: none; cursor: pointer; font-family: var(--sans); }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active { background: var(--accent-soft); color: var(--accent-2); }
+    .actions-mini { display: flex; gap: 10px; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: 8px; border: 1px solid var(--border); background: transparent; font-weight: 600; font-size: 14px; color: var(--text); transition: border-color .15s ease, background .15s ease, transform .15s ease; }
+    .btn:hover { border-color: var(--border-hover); background: rgba(255,255,255,.04); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.primary:hover { background: var(--accent-2); transform: translateY(-1px); }
+
+    .hero { padding: 96px 0 64px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--accent-2); background: var(--accent-soft); border: 1px solid rgba(99,102,241,.28); padding: 7px 13px; border-radius: 999px; }
+    h1 { margin: 24px 0 18px; font-size: clamp(36px, 5.6vw, 62px); line-height: 1.12; letter-spacing: -.035em; max-width: 820px; font-weight: 800; }
+    h1 .accent { color: var(--accent-2); }
+    .lead { max-width: 660px; color: var(--dim); font-size: 18px; margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 56px; }
+    .stat { background: var(--card); padding: 24px 22px; }
+    .stat-num { display: block; font-size: 26px; font-weight: 800; letter-spacing: -.02em; color: var(--text); }
+    .stat-label { display: block; margin-top: 6px; font-size: 13px; color: var(--faint); }
+
+    section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-head { margin-bottom: 30px; max-width: 700px; }
+    .eyebrow-label { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px; }
+    .section-head h2 { margin: 0 0 10px; font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -.025em; font-weight: 800; }
+    .section-head p { margin: 0; color: var(--dim); }
+
+    .card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 24px; transition: border-color .15s ease, transform .15s ease; }
+    .about-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 20px; }
+    .about-grid .card p { color: var(--dim); margin: 0; }
+    .about-grid .card p + p { margin-top: 14px; }
+    .facts-card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 22px; }
+    .facts-card h3 { margin: 0 0 16px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+    .fact { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .fact:last-child { border-bottom: 0; padding-bottom: 0; }
+    .fact:first-child { padding-top: 0; }
+    .fact span:first-child { color: var(--faint); }
+    .fact span:last-child { font-weight: 600; text-align: right; color: var(--text); }
+
+    .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .mini .badge { display: inline-flex; width: 30px; height: 30px; border-radius: 8px; background: var(--accent-soft); color: var(--accent-2); align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+    .mini h3 { margin: 14px 0 8px; font-size: 18px; font-weight: 700; }
+    .mini p { font-size: 14.5px; color: var(--dim); margin: 0; }
+
+    .skill-groups { display: grid; gap: 22px; }
+    .skill-group .label { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; display: block; }
+    .skills { display: flex; flex-wrap: wrap; gap: 9px; }
+    .chip { display: inline-flex; align-items: center; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 13.5px; font-weight: 500; }
+    .chip:hover { border-color: var(--border-hover); }
+
+    .timeline { display: grid; gap: 14px; }
+    .item { display: grid; grid-template-columns: 160px 1fr; gap: 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 24px; }
+    .item .time { color: var(--accent-2); font-weight: 700; font-size: 13.5px; padding-top: 2px; }
+    .item h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
+    .item p { margin: 0; color: var(--dim); }
+    .item ul { margin: 10px 0 0; padding-left: 18px; color: var(--dim); }
+    .item li { margin-bottom: 4px; }
+    .item li::marker { color: var(--accent-2); }
+    .item strong { color: var(--text); }
+    .job-block { margin-top: 16px; }
+    .tech-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-row span { font-size: 12.5px; color: var(--dim); background: rgba(255,255,255,.05); border: 1px solid var(--border); padding: 5px 10px; border-radius: 999px; }
+
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { display: block; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 22px; transition: border-color .15s ease, transform .15s ease; }
+    .project:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .project .repo-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .project h3 { margin: 0; font-size: 18px; font-weight: 700; }
+    .tag { display: inline-flex; align-items: center; padding: 5px 11px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-2); font-size: 11.5px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+    .project p { margin: 14px 0 14px; color: var(--dim); font-size: 14.5px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .meta span { font-size: 12px; color: var(--faint); background: rgba(255,255,255,.05); border: 1px solid var(--border); padding: 5px 9px; border-radius: 999px; }
+
+    .contact { text-align: center; border: 1px solid var(--border); border-radius: 20px; background: var(--card); padding: 56px 24px; }
+    .contact h2 { margin: 14px 0 12px; font-size: clamp(26px, 4vw, 38px); font-weight: 800; letter-spacing: -.025em; }
+    .contact p { max-width: 620px; margin: 0 auto; color: var(--dim); }
+
+    footer { border-top: 1px solid var(--border); padding: 26px 0 40px; color: var(--faint); font-size: 13px; }
+    footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 860px) {
+      nav.links { display: none; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .cards-3, .projects { grid-template-columns: 1fr; }
+      .item { grid-template-columns: 1fr; gap: 8px; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(100% - 28px, 1080px); }
+      .card, .project, .item { padding: 18px; }
+      .hero { padding-top: 56px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="回到首頁"><span class="mark">G</span><span>Gary Chen</span></a>
+      <nav class="links" aria-label="主要導覽">
+        <a href="#about" data-i18n="nav.about">關於</a>
+        <a href="#skills" data-i18n="nav.skills">技能</a>
+        <a href="#experience" data-i18n="nav.experience">經歷</a>
+        <a href="#projects" data-i18n="nav.projects">專案</a>
+        <a href="#contact" data-i18n="nav.contact">聯絡</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button type="button" class="lang-btn active" data-lang="zh">中</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <div class="actions-mini">
+          <a class="btn" href="https://github.com/arlong0828" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn primary" href="mailto:arlongchen082557@gmail.com" data-i18n="btn.contactNav">聯絡我</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow" data-i18n="hero.eyebrow">● 積極求職中</span>
+        <h1 data-i18n="hero.h1">軟體工程師，具備 <span class="accent">AI</span> 與演算法研究背景。</h1>
+        <p class="lead" data-i18n="hero.lead">資訊管理碩士，目前專注於智慧物流系統開發（WMS / WCS / WES / LMS）與企業 AI 助手應用；具備 Python、PHP / Laravel、Java、Vue.js、資料庫、深度學習與 LLM／GraphRAG 相關經驗。</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:arlongchen082557@gmail.com" data-i18n="hero.btn.contact">聯絡我</a>
+          <a class="btn" href="https://github.com/arlong0828" target="_blank" rel="noreferrer" data-i18n="hero.btn.github">查看 GitHub</a>
+          <a class="btn" href="https://pda.104.com.tw/profile/share/bIlgVrF9hDCgq6KrUHSuD3jDGFZUORm0" target="_blank" rel="noreferrer" data-i18n="hero.btn.resume104">查看 104 履歷</a>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num" data-i18n="stat1.num">4+ 年</span><span class="stat-label" data-i18n="stat1.label">程式開發經驗</span></div>
+          <div class="stat"><span class="stat-num" data-i18n="stat2.num">1~2 年</span><span class="stat-label" data-i18n="stat2.label">正職工作資歷</span></div>
+          <div class="stat"><span class="stat-num" data-i18n="stat3.num">OCA</span><span class="stat-label" data-i18n="stat3.label">Java SE 8 證照</span></div>
+          <div class="stat"><span class="stat-num" data-i18n="stat4.num">特優</span><span class="stat-label" data-i18n="stat4.label">2025 崇越論文大賞</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <div class="section-head">
+        <span class="eyebrow-label" data-i18n="label.about">自我介紹</span>
+        <h2 data-i18n="about.h2">關於我</h2>
+      </div>
+      <div class="about-grid">
+        <article class="card" data-i18n="about.body"><p>您好，我是鄭樺駿，目前擔任軟體工程師，主要負責智慧物流系統開發，包含 WMS、WCS、WES 及 LMS（標籤管理系統）的功能開發、系統整合與維護，並協助自動化物流設備串接，提升倉儲作業效率。</p><p>除了物流系統開發外，我也參與企業 AI 專案，建置以 Qwen3.5 為核心的本地大型語言模型（LLM）AI 助手，採用 GraphRAG 技術整合公司 SOP 與知識庫，提供企業內部智慧問答服務。</p><p>研究所期間，我的研究方向為物流路徑最佳化，設計混合式 NSGA-II 演算法解決多層次車輛路徑規劃問題，也因此培養了演算法設計與問題分析能力。</p><p>希望能將我在智慧物流、生成式 AI 與系統開發的實務經驗，運用於更多具有挑戰性的專案，持續創造價值並精進自己的技術能力。</p></article>
+        <aside class="facts-card">
+          <h3 data-i18n="facts.title">個人檔案</h3>
+          <div class="fact"><span data-i18n="facts.traits.label">特質</span><span data-i18n="facts.traits.value">Java・Python・Vue.js・PHP・LLM</span></div>
+          <div class="fact"><span data-i18n="facts.lang.label">語言能力</span><span data-i18n="facts.lang.value">中文（精通）・英文（中等）・日文（略懂）</span></div>
+          <div class="fact"><span data-i18n="facts.onboard.label">可上班時間</span><span data-i18n="facts.onboard.value">錄取後隨時可上班</span></div>
+          <div class="fact"><span data-i18n="facts.remote.label">遠端工作</span><span data-i18n="facts.remote.value">對遠端工作有意願</span></div>
+          <div class="fact"><span data-i18n="facts.edu.label">最高學歷</span><span data-i18n="facts.edu.value">國立高雄科技大學 資管碩士</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-head">
+        <span class="eyebrow-label" data-i18n="label.competencies">核心能力</span>
+        <h2 data-i18n="comp.h2">核心能力</h2>
+        <p data-i18n="comp.p">以軟體工程為主軸，AI 與演算法研究作為加分能力，適合參與系統開發、資料處理、AI 應用與流程自動化。</p>
+      </div>
+      <div class="cards-3">
+        <article class="card mini">
+          <span class="badge">01</span>
+          <h3 data-i18n="comp1.title">智慧物流系統開發</h3>
+          <p data-i18n="comp1.desc">熟悉前端 Vue.js 與後端 Python、PHP / Laravel，能開發與整合 WMS、WCS、WES、LMS 等倉儲自動化系統。</p>
+        </article>
+        <article class="card mini">
+          <span class="badge">02</span>
+          <h3 data-i18n="comp2.title">企業 AI 應用</h3>
+          <p data-i18n="comp2.desc">具備 TensorFlow、Keras、OpenCV 與 CNN 模型訓練經驗；建置以 GraphRAG + Qwen3.5 為核心的企業本地 LLM 助手。</p>
+        </article>
+        <article class="card mini">
+          <span class="badge">03</span>
+          <h3 data-i18n="comp3.title">演算法最佳化</h3>
+          <p data-i18n="comp3.desc">碩士研究聚焦車輛路徑問題，提出 Hybrid NSGA-II 並結合 3D K-Means、Clarke-Wright 與 Local Search。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="skills">
+      <div class="section-head">
+        <span class="eyebrow-label" data-i18n="label.skills">技術技能</span>
+        <h2 data-i18n="skills.h2">技術技能</h2>
+        <p data-i18n="skills.p">依照履歷與專案整理，讓 HR 或主管可以快速掃描你的技術範圍。</p>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <span class="label">Languages</span>
+          <div class="skills">
+            <span class="chip">Python</span><span class="chip">PHP</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">C++</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="label">Frameworks &amp; Frontend</span>
+          <div class="skills">
+            <span class="chip">Laravel</span><span class="chip">Django</span><span class="chip">Vue.js</span><span class="chip">jQuery</span><span class="chip">HTML</span><span class="chip">CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="label">Data &amp; Infra</span>
+          <div class="skills">
+            <span class="chip">MySQL</span><span class="chip">MS SQL</span><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="label">AI / ML &amp; LLM</span>
+          <div class="skills">
+            <span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">OpenCV</span><span class="chip">影像辨識</span><span class="chip">電腦視覺</span><span class="chip">Azure Face API</span><span class="chip">LLM</span><span class="chip">GraphRAG</span><span class="chip">Qwen3.5</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="label">Research &amp; Optimization</span>
+          <div class="skills">
+            <span class="chip">NSGA-II</span><span class="chip">K-Means</span><span class="chip">Clarke-Wright</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="label">Certifications</span>
+          <div class="skills">
+            <span class="chip">OCA Java SE 8</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="experience">
+      <div class="section-head">
+        <span class="eyebrow-label" data-i18n="label.experience">工作經歷</span>
+        <h2 data-i18n="exp.h2">工作經驗</h2>
+        <p data-i18n="exp.p">目前專注於智慧物流系統開發與企業 AI 應用；其他服務業經驗濃縮呈現為溝通與現場問題處理能力。</p>
+      </div>
+      <div class="timeline">
+        <article class="item">
+          <div class="time" data-i18n="job1.time">2025/10 — 現在</div>
+          <div>
+            <h3 data-i18n="job1.title">軟體工程師｜系統整合服務公司</h3>
+            <p data-i18n="job1.subtitle">電腦系統整合服務業・1~30 人・依雇主要求公司名稱保密</p>
+
+            <div class="job-block" data-i18n="job1.wms"><p><strong>倉儲管理系統（WMS）</strong></p><ul><li>負責 WMS 功能開發、維護與系統優化。</li><li>規劃並改善入庫、出庫、盤點、庫存管理及庫位管理等核心流程。</li><li>整合資料庫與系統介面，提高倉儲作業效率與資料準確性。</li><li>配合客戶需求進行客製化功能開發與流程改善。</li></ul></div>
+
+            <div class="job-block" data-i18n="job1.wcs"><p><strong>倉儲控制系統（WCS）</strong></p><ul><li>負責 WCS 與自動化物流設備之系統整合。</li><li>串接輸送帶、堆垛機、AGV/AMR、PLC 等設備控制流程。</li><li>設計設備通訊流程與異常監控機制，提升系統穩定性。</li><li>優化設備調度邏輯，提高物流處理效率與設備使用率。</li><li>協助設備測試、現場導入及異常問題分析與排除。</li></ul></div>
+
+            <div class="job-block" data-i18n="job1.wes"><p><strong>倉儲執行系統（WES）</strong></p><ul><li>參與 WES 功能開發與流程設計。</li><li>建立訂單、設備及作業任務之協同調度機制。</li><li>整合 WMS 與 WCS，提升整體物流自動化效率。</li><li>優化任務派工、設備資源分配及作業流程，提升吞吐量。</li></ul></div>
+
+            <div class="job-block" data-i18n="job1.lms"><p><strong>標籤管理系統（LMS）</strong></p><ul><li>開發與維護標籤管理系統（LMS）。</li><li>整合標籤列印設備與條碼管理流程。</li><li>設計及維護商品、物流、出貨等標籤格式。</li><li>協助 ERP、WMS 等系統串接，自動產生與列印物流標籤。</li><li>提升標籤管理效率，降低人工操作錯誤率。</li></ul></div>
+
+            <div class="job-block" data-i18n="job1.ai"><p><strong>企業 AI 助手開發（GraphRAG + Qwen3.5）</strong></p><ul><li>建置以 Qwen3.5 大型語言模型（LLM）為核心的企業本地 AI 助手。</li><li>採用 GraphRAG（Graph Retrieval-Augmented Generation）架構，提升知識檢索與推理能力。</li><li>整合企業 SOP、作業文件及知識庫，提供自然語言問答與知識查詢服務。</li><li>建立知識圖譜（Knowledge Graph）與向量資料庫，提高複雜問題檢索的準確率與回答品質。</li><li>設計 GraphRAG 知識檢索流程，降低大型語言模型幻覺（Hallucination）並提升回答可信度。</li><li>完成本地端 LLM 部署與企業知識整合，確保資料安全與內部資訊不外流。</li></ul></div>
+
+            <div class="tech-row job-block"><span>Python</span><span>Vue.js</span><span>Laravel</span><span>LLM</span><span>GraphRAG</span><span>Qwen3.5</span></div>
+          </div>
+        </article>
+        <article class="item">
+          <div class="time" data-i18n="job2.time">2022/02 — 2022/05</div>
+          <div>
+            <h3 data-i18n="job2.title">門市店員（兼職）｜全家便利商店股份有限公司</h3>
+            <p data-i18n="job2.desc">櫃檯門市接待與需求服務、產品介紹及解說銷售。</p>
+          </div>
+        </article>
+        <article class="item">
+          <div class="time" data-i18n="job3.time">2021/05 — 2021/07</div>
+          <div>
+            <h3 data-i18n="job3.title">售票／收銀人員｜統一超商股份有限公司</h3>
+            <p data-i18n="job3.desc">櫃檯門市接待與需求服務、產品介紹及解說銷售。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="projects">
+      <div class="section-head">
+        <span class="eyebrow-label" data-i18n="label.projects">精選專案</span>
+        <h2 data-i18n="proj.h2">專案與研究成果</h2>
+        <p data-i18n="proj.p">把 104 履歷中的專題、碩士論文與公開 GitHub 專案整理成容易閱讀的展示區。</p>
+      </div>
+      <div class="projects">
+        <a class="project" href="https://github.com/arlong0828/Store.git" target="_blank" rel="noreferrer">
+          <div class="repo-head">
+            <h3 data-i18n="proj1.title">Store — 無人化商店實作</h3>
+            <span class="tag">AI / CV</span>
+          </div>
+          <p data-i18n="proj1.desc">基於 Azure 與 tf.keras 的無人化商店系統，整合商品辨識、人臉驗證與支付流程。我負責模型訓練、後端服務與資料庫流程，商品辨識準確率達 95% 以上。</p>
+          <div class="meta"><span>Django</span><span>SQLite</span><span>Keras CNN</span><span>OpenCV</span><span>Azure Face API</span></div>
+        </a>
+        <a class="project" href="https://github.com/arlong0828/My-paper-.git" target="_blank" rel="noreferrer">
+          <div class="repo-head">
+            <h3 data-i18n="proj2.title">My-paper — 智慧物流路徑最佳化</h3>
+            <span class="tag">Research</span>
+          </div>
+          <p data-i18n="proj2.desc">碩士論文：解決「二層級、多倉庫、多日、多時期、容量限制且具同時取送需求之車輛路徑問題（2E-MD-MD-MP-CVRP-SPD）」。目標為重構物流配送網絡，同時最小化總營運成本與所需車輛數量。提出 Hybrid NSGA-II（HNSGA-II），結合 3D K-Means 分群定位衛星據點、Clarke-Wright 儲蓄法提升初始解品質、Local Search 強化局部探索；投稿 Applied Soft Computing，並獲 2025 第十八屆崇越論文大賞特優。</p>
+          <div class="meta"><span>2024/11–2025/06</span><span>HNSGA-II</span><span>3D K-Means</span><span>Clarke-Wright</span><span>VRP</span></div>
+        </a>
+        <a class="project" href="https://github.com/arlong0828/Stock-Line-bot" target="_blank" rel="noreferrer">
+          <div class="repo-head">
+            <h3 data-i18n="proj3.title">Stock-Line-bot</h3>
+            <span class="tag">Automation</span>
+          </div>
+          <p data-i18n="proj3.desc">股票資訊與提醒相關的 LINE Bot 專案，作為投資資訊自動化、互動式查詢與即時通知的基礎。</p>
+          <div class="meta"><span>LINE Bot</span><span>Stock Data</span><span>Automation</span></div>
+        </a>
+        <a class="project" href="https://github.com/arlong0828/LLM-SOP" target="_blank" rel="noreferrer">
+          <div class="repo-head">
+            <h3 data-i18n="proj4.title">LLM-SOP</h3>
+            <span class="tag">Knowledge</span>
+          </div>
+          <p data-i18n="proj4.desc">整理 LLM 使用、SOP 與知識工作方法，讓 AI 協作流程更標準化、更容易複製與落地。</p>
+          <div class="meta"><span>LLM</span><span>SOP</span><span>Docs</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-head">
+        <span class="eyebrow-label" data-i18n="label.education">學歷與證照</span>
+        <h2 data-i18n="edu.h2">學歷、證照與語言</h2>
+        <p data-i18n="edu.p">資訊管理背景，具備程式、資料、AI 與管理問題建模的跨域基礎。</p>
+      </div>
+      <div class="timeline">
+        <article class="item">
+          <div class="time" data-i18n="edu1.time">2023/09 — 2025/08</div>
+          <div><h3 data-i18n="edu1.title">國立高雄科技大學｜資訊管理學系 碩士</h3><p data-i18n="edu1.desc">研究智慧物流、車輛路徑問題、多目標最佳化、啟發式演算法與資料分析。</p></div>
+        </article>
+        <article class="item">
+          <div class="time" data-i18n="edu2.time">2019/09 — 2023/06</div>
+          <div><h3 data-i18n="edu2.title">國立澎湖科技大學｜資訊管理系 學士</h3><p data-i18n="edu2.desc">大學期間自學 Python 與 JavaScript，完成無人化商店專題，涵蓋前端、後端、資料庫、AI 模型與雲端 API 整合。</p></div>
+        </article>
+        <article class="item">
+          <div class="time" data-i18n="edu3.time">證照 / 獎項</div>
+          <div><h3 data-i18n="edu3.title">OCA Java SE 8、2025 第十八屆崇越論文大賞特優</h3><p data-i18n="edu3.desc">語言能力：英文聽說讀寫中等；中文精通；日文略懂。</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="contact">
+        <span class="eyebrow-label" data-i18n="label.contact">聯絡方式</span>
+        <h2 data-i18n="contact.h2">歡迎聯繫我</h2>
+        <p data-i18n="contact.p">正在尋找前端、後端、全端、AI 工程或演算法相關機會。若你需要能結合系統開發、AI 應用與研究落地的人才，歡迎與我聯絡。</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="mailto:arlongchen082557@gmail.com" data-i18n="contact.btn.email">寄信聯絡</a>
+          <a class="btn" href="https://github.com/arlong0828" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="https://pda.104.com.tw/profile/share/bIlgVrF9hDCgq6KrUHSuD3jDGFZUORm0" target="_blank" rel="noreferrer" data-i18n="contact.btn.resume104">104 履歷</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> 鄭樺駿 Gary Chen</span>
+      <span>Software Engineering · AI · Full-stack Development</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var TITLES = {
+      zh: '鄭樺駿 Gary Chen — 軟體工程師履歷',
+      en: 'Gary Chen — Software Engineer Resume'
+    };
+
+    var I18N = {
+      zh: {
+        'nav.about': '關於', 'nav.skills': '技能', 'nav.experience': '經歷', 'nav.projects': '專案', 'nav.contact': '聯絡',
+        'btn.contactNav': '聯絡我',
+        'hero.eyebrow': '● 積極求職中',
+        'hero.h1': '軟體工程師，具備 <span class="accent">AI</span> 與演算法研究背景。',
+        'hero.lead': '資訊管理碩士，目前專注於智慧物流系統開發（WMS / WCS / WES / LMS）與企業 AI 助手應用；具備 Python、PHP / Laravel、Java、Vue.js、資料庫、深度學習與 LLM／GraphRAG 相關經驗。',
+        'hero.btn.contact': '聯絡我', 'hero.btn.github': '查看 GitHub', 'hero.btn.resume104': '查看 104 履歷',
+        'stat1.num': '4+ 年', 'stat1.label': '程式開發經驗',
+        'stat2.num': '1~2 年', 'stat2.label': '正職工作資歷',
+        'stat3.num': 'OCA', 'stat3.label': 'Java SE 8 證照',
+        'stat4.num': '特優', 'stat4.label': '2025 崇越論文大賞',
+        'label.about': '自我介紹', 'label.competencies': '核心能力', 'label.skills': '技術技能',
+        'label.experience': '工作經歷', 'label.projects': '精選專案', 'label.education': '學歷與證照', 'label.contact': '聯絡方式',
+        'about.h2': '關於我',
+        'about.body': '<p>您好，我是鄭樺駿，目前擔任軟體工程師，主要負責智慧物流系統開發，包含 WMS、WCS、WES 及 LMS（標籤管理系統）的功能開發、系統整合與維護，並協助自動化物流設備串接，提升倉儲作業效率。</p><p>除了物流系統開發外，我也參與企業 AI 專案，建置以 Qwen3.5 為核心的本地大型語言模型（LLM）AI 助手，採用 GraphRAG 技術整合公司 SOP 與知識庫，提供企業內部智慧問答服務。</p><p>研究所期間，我的研究方向為物流路徑最佳化，設計混合式 NSGA-II 演算法解決多層次車輛路徑規劃問題，也因此培養了演算法設計與問題分析能力。</p><p>希望能將我在智慧物流、生成式 AI 與系統開發的實務經驗，運用於更多具有挑戰性的專案，持續創造價值並精進自己的技術能力。</p>',
+        'facts.title': '個人檔案',
+        'facts.traits.label': '特質', 'facts.traits.value': 'Java・Python・Vue.js・PHP・LLM',
+        'facts.lang.label': '語言能力', 'facts.lang.value': '中文（精通）・英文（中等）・日文（略懂）',
+        'facts.onboard.label': '可上班時間', 'facts.onboard.value': '錄取後隨時可上班',
+        'facts.remote.label': '遠端工作', 'facts.remote.value': '對遠端工作有意願',
+        'facts.edu.label': '最高學歷', 'facts.edu.value': '國立高雄科技大學 資管碩士',
+        'comp.h2': '核心能力',
+        'comp.p': '以軟體工程為主軸，AI 與演算法研究作為加分能力，適合參與系統開發、資料處理、AI 應用與流程自動化。',
+        'comp1.title': '智慧物流系統開發', 'comp1.desc': '熟悉前端 Vue.js 與後端 Python、PHP / Laravel，能開發與整合 WMS、WCS、WES、LMS 等倉儲自動化系統。',
+        'comp2.title': '企業 AI 應用', 'comp2.desc': '具備 TensorFlow、Keras、OpenCV 與 CNN 模型訓練經驗；建置以 GraphRAG + Qwen3.5 為核心的企業本地 LLM 助手。',
+        'comp3.title': '演算法最佳化', 'comp3.desc': '碩士研究聚焦車輛路徑問題，提出 Hybrid NSGA-II 並結合 3D K-Means、Clarke-Wright 與 Local Search。',
+        'skills.h2': '技術技能', 'skills.p': '依照履歷與專案整理，讓 HR 或主管可以快速掃描你的技術範圍。',
+        'exp.h2': '工作經驗', 'exp.p': '目前專注於智慧物流系統開發與企業 AI 應用；其他服務業經驗濃縮呈現為溝通與現場問題處理能力。',
+        'job1.time': '2025/10 — 現在', 'job1.title': '軟體工程師｜系統整合服務公司',
+        'job1.subtitle': '電腦系統整合服務業・1~30 人・依雇主要求公司名稱保密',
+        'job1.wms': '<p><strong>倉儲管理系統（WMS）</strong></p><ul><li>負責 WMS 功能開發、維護與系統優化。</li><li>規劃並改善入庫、出庫、盤點、庫存管理及庫位管理等核心流程。</li><li>整合資料庫與系統介面，提高倉儲作業效率與資料準確性。</li><li>配合客戶需求進行客製化功能開發與流程改善。</li></ul>',
+        'job1.wcs': '<p><strong>倉儲控制系統（WCS）</strong></p><ul><li>負責 WCS 與自動化物流設備之系統整合。</li><li>串接輸送帶、堆垛機、AGV/AMR、PLC 等設備控制流程。</li><li>設計設備通訊流程與異常監控機制，提升系統穩定性。</li><li>優化設備調度邏輯，提高物流處理效率與設備使用率。</li><li>協助設備測試、現場導入及異常問題分析與排除。</li></ul>',
+        'job1.wes': '<p><strong>倉儲執行系統（WES）</strong></p><ul><li>參與 WES 功能開發與流程設計。</li><li>建立訂單、設備及作業任務之協同調度機制。</li><li>整合 WMS 與 WCS，提升整體物流自動化效率。</li><li>優化任務派工、設備資源分配及作業流程，提升吞吐量。</li></ul>',
+        'job1.lms': '<p><strong>標籤管理系統（LMS）</strong></p><ul><li>開發與維護標籤管理系統（LMS）。</li><li>整合標籤列印設備與條碼管理流程。</li><li>設計及維護商品、物流、出貨等標籤格式。</li><li>協助 ERP、WMS 等系統串接，自動產生與列印物流標籤。</li><li>提升標籤管理效率，降低人工操作錯誤率。</li></ul>',
+        'job1.ai': '<p><strong>企業 AI 助手開發（GraphRAG + Qwen3.5）</strong></p><ul><li>建置以 Qwen3.5 大型語言模型（LLM）為核心的企業本地 AI 助手。</li><li>採用 GraphRAG（Graph Retrieval-Augmented Generation）架構，提升知識檢索與推理能力。</li><li>整合企業 SOP、作業文件及知識庫，提供自然語言問答與知識查詢服務。</li><li>建立知識圖譜（Knowledge Graph）與向量資料庫，提高複雜問題檢索的準確率與回答品質。</li><li>設計 GraphRAG 知識檢索流程，降低大型語言模型幻覺（Hallucination）並提升回答可信度。</li><li>完成本地端 LLM 部署與企業知識整合，確保資料安全與內部資訊不外流。</li></ul>',
+        'job2.time': '2022/02 — 2022/05', 'job2.title': '門市店員（兼職）｜全家便利商店股份有限公司', 'job2.desc': '櫃檯門市接待與需求服務、產品介紹及解說銷售。',
+        'job3.time': '2021/05 — 2021/07', 'job3.title': '售票／收銀人員｜統一超商股份有限公司', 'job3.desc': '櫃檯門市接待與需求服務、產品介紹及解說銷售。',
+        'proj.h2': '專案與研究成果', 'proj.p': '把 104 履歷中的專題、碩士論文與公開 GitHub 專案整理成容易閱讀的展示區。',
+        'proj1.title': 'Store — 無人化商店實作',
+        'proj1.desc': '基於 Azure 與 tf.keras 的無人化商店系統，整合商品辨識、人臉驗證與支付流程。我負責模型訓練、後端服務與資料庫流程，商品辨識準確率達 95% 以上。',
+        'proj2.title': 'My-paper — 智慧物流路徑最佳化',
+        'proj2.desc': '碩士論文：解決「二層級、多倉庫、多日、多時期、容量限制且具同時取送需求之車輛路徑問題（2E-MD-MD-MP-CVRP-SPD）」。目標為重構物流配送網絡，同時最小化總營運成本與所需車輛數量。提出 Hybrid NSGA-II（HNSGA-II），結合 3D K-Means 分群定位衛星據點、Clarke-Wright 儲蓄法提升初始解品質、Local Search 強化局部探索；投稿 Applied Soft Computing，並獲 2025 第十八屆崇越論文大賞特優。',
+        'proj3.title': 'Stock-Line-bot', 'proj3.desc': '股票資訊與提醒相關的 LINE Bot 專案，作為投資資訊自動化、互動式查詢與即時通知的基礎。',
+        'proj4.title': 'LLM-SOP', 'proj4.desc': '整理 LLM 使用、SOP 與知識工作方法，讓 AI 協作流程更標準化、更容易複製與落地。',
+        'edu.h2': '學歷、證照與語言', 'edu.p': '資訊管理背景，具備程式、資料、AI 與管理問題建模的跨域基礎。',
+        'edu1.time': '2023/09 — 2025/08', 'edu1.title': '國立高雄科技大學｜資訊管理學系 碩士', 'edu1.desc': '研究智慧物流、車輛路徑問題、多目標最佳化、啟發式演算法與資料分析。',
+        'edu2.time': '2019/09 — 2023/06', 'edu2.title': '國立澎湖科技大學｜資訊管理系 學士', 'edu2.desc': '大學期間自學 Python 與 JavaScript，完成無人化商店專題，涵蓋前端、後端、資料庫、AI 模型與雲端 API 整合。',
+        'edu3.time': '證照 / 獎項', 'edu3.title': 'OCA Java SE 8、2025 第十八屆崇越論文大賞特優', 'edu3.desc': '語言能力：英文聽說讀寫中等；中文精通；日文略懂。',
+        'contact.h2': '歡迎聯繫我',
+        'contact.p': '正在尋找前端、後端、全端、AI 工程或演算法相關機會。若你需要能結合系統開發、AI 應用與研究落地的人才，歡迎與我聯絡。',
+        'contact.btn.email': '寄信聯絡', 'contact.btn.resume104': '104 履歷'
+      },
+      en: {
+        'nav.about': 'About', 'nav.skills': 'Skills', 'nav.experience': 'Experience', 'nav.projects': 'Projects', 'nav.contact': 'Contact',
+        'btn.contactNav': 'Contact',
+        'hero.eyebrow': '● Available for new opportunities',
+        'hero.h1': 'Software Engineer with an <span class="accent">AI</span> research background.',
+        'hero.lead': 'M.S. in Information Management, currently focused on smart logistics systems (WMS / WCS / WES / LMS) and enterprise AI assistants. Experienced with Python, PHP / Laravel, Java, Vue.js, databases, deep learning, and LLM / GraphRAG.',
+        'hero.btn.contact': 'Contact me', 'hero.btn.github': 'View GitHub', 'hero.btn.resume104': 'View 104 Resume',
+        'stat1.num': '4+ yrs', 'stat1.label': 'Years of coding',
+        'stat2.num': '1–2 yrs', 'stat2.label': 'Full-time experience',
+        'stat3.num': 'OCA', 'stat3.label': 'Java SE 8 Certified',
+        'stat4.num': 'Top Honor', 'stat4.label': '2025 Chong-Yue Paper Award',
+        'label.about': 'About', 'label.competencies': 'Core Competencies', 'label.skills': 'Tech Stack',
+        'label.experience': 'Work Experience', 'label.projects': 'Selected Projects', 'label.education': 'Education & Certifications', 'label.contact': 'Get In Touch',
+        'about.h2': 'About Me',
+        'about.body': "<p>Hi, I'm Gary Chen. I currently work as a Software Engineer, primarily responsible for developing smart logistics systems — including WMS, WCS, WES, and LMS (Label Management System) — covering feature development, system integration, and maintenance, while also helping integrate automated warehouse equipment to improve operational efficiency.</p><p>Beyond logistics systems, I also work on enterprise AI projects. I built an on-premises AI assistant powered by the Qwen3.5 large language model, using GraphRAG to integrate company SOPs and knowledge bases into a natural-language Q&amp;A service for internal use.</p><p>During my master's program, my research focused on logistics route optimization. I designed a hybrid NSGA-II algorithm to solve multi-echelon vehicle routing problems, which strengthened my skills in algorithm design and problem analysis.</p><p>I hope to apply my hands-on experience in smart logistics, generative AI, and system development to more challenging projects — continuing to create value while sharpening my technical skills.</p>",
+        'facts.title': 'Profile',
+        'facts.traits.label': 'Traits', 'facts.traits.value': 'Java・Python・Vue.js・PHP・LLM',
+        'facts.lang.label': 'Languages', 'facts.lang.value': 'Chinese (Fluent) · English (Intermediate) · Japanese (Basic)',
+        'facts.onboard.label': 'Availability', 'facts.onboard.value': 'Immediately available upon offer',
+        'facts.remote.label': 'Remote Work', 'facts.remote.value': 'Open to remote work',
+        'facts.edu.label': 'Education', 'facts.edu.value': 'M.S. in Information Management, NKUST',
+        'comp.h2': 'Core Competencies',
+        'comp.p': 'Software engineering is my core focus, with AI and algorithm research as a differentiator — well suited to system development, data processing, AI applications, and process automation.',
+        'comp1.title': 'Smart Logistics Systems', 'comp1.desc': 'Skilled in Vue.js on the frontend and Python / PHP (Laravel) on the backend — able to build and integrate warehouse automation systems such as WMS, WCS, WES, and LMS.',
+        'comp2.title': 'Enterprise AI Applications', 'comp2.desc': 'Experienced with TensorFlow, Keras, OpenCV, and CNN model training; built an on-premises enterprise LLM assistant powered by GraphRAG + Qwen3.5.',
+        'comp3.title': 'Algorithm Optimization', 'comp3.desc': 'Master’s research focused on vehicle routing problems, proposing a Hybrid NSGA-II combined with 3D K-Means, Clarke-Wright, and Local Search.',
+        'skills.h2': 'Technical Skills', 'skills.p': 'Organized from my resume and projects so recruiters and hiring managers can quickly scan my technical range.',
+        'exp.h2': 'Work Experience', 'exp.p': 'Currently focused on smart logistics systems and enterprise AI applications; other retail experience is summarized to highlight communication and on-the-spot problem-solving skills.',
+        'job1.time': 'Oct 2025 — Present', 'job1.title': 'Software Engineer | System Integration Company',
+        'job1.subtitle': 'Computer Systems Integration Industry · 1–30 employees · Company name withheld at employer’s request',
+        'job1.wms': '<p><strong>Warehouse Management System (WMS)</strong></p><ul><li>Developed, maintained, and optimized WMS features.</li><li>Planned and improved core processes including inbound/outbound handling, cycle counting, inventory management, and bin location management.</li><li>Integrated the database with system interfaces to improve warehouse efficiency and data accuracy.</li><li>Delivered customized features and process improvements based on client requirements.</li></ul>',
+        'job1.wcs': '<p><strong>Warehouse Control System (WCS)</strong></p><ul><li>Responsible for integrating WCS with automated logistics equipment.</li><li>Connected control flows for conveyors, stacker cranes, AGV/AMR units, and PLCs.</li><li>Designed equipment communication protocols and anomaly-monitoring mechanisms to improve system stability.</li><li>Optimized equipment scheduling logic to improve throughput and equipment utilization.</li><li>Assisted with equipment testing, on-site deployment, and troubleshooting.</li></ul>',
+        'job1.wes': '<p><strong>Warehouse Execution System (WES)</strong></p><ul><li>Participated in WES feature development and process design.</li><li>Built coordinated dispatch mechanisms across orders, equipment, and tasks.</li><li>Integrated WMS and WCS to improve overall logistics automation efficiency.</li><li>Optimized task assignment, resource allocation, and workflows to increase throughput.</li></ul>',
+        'job1.lms': '<p><strong>Label Management System (LMS)</strong></p><ul><li>Developed and maintained the Label Management System (LMS).</li><li>Integrated label printers with barcode management workflows.</li><li>Designed and maintained label formats for products, logistics, and shipping.</li><li>Helped connect ERP and WMS systems to auto-generate and print logistics labels.</li><li>Improved label management efficiency and reduced manual errors.</li></ul>',
+        'job1.ai': '<p><strong>Enterprise AI Assistant (GraphRAG + Qwen3.5)</strong></p><ul><li>Built an on-premises enterprise AI assistant powered by the Qwen3.5 large language model (LLM).</li><li>Adopted a GraphRAG (Graph Retrieval-Augmented Generation) architecture to improve knowledge retrieval and reasoning.</li><li>Integrated company SOPs, operational documents, and knowledge bases into a natural-language Q&amp;A service.</li><li>Built a knowledge graph and vector database to improve retrieval accuracy and answer quality for complex queries.</li><li>Designed the GraphRAG retrieval pipeline to reduce LLM hallucination and improve answer reliability.</li><li>Completed on-premises LLM deployment and enterprise knowledge integration to ensure data security.</li></ul>',
+        'job2.time': 'Feb 2022 — May 2022', 'job2.title': 'Part-time Store Clerk | FamilyMart Co., Ltd.', 'job2.desc': 'Front-counter customer service and product consultation and sales.',
+        'job3.time': 'May 2021 — Jul 2021', 'job3.title': 'Ticketing / Cashier | President Chain Store Corp. (7-Eleven)', 'job3.desc': 'Front-counter customer service and product consultation and sales.',
+        'proj.h2': 'Projects & Research', 'proj.p': "A curated view of the capstone project, master's thesis, and public GitHub projects from my 104 resume.",
+        'proj1.title': 'Store — Unmanned Store System',
+        'proj1.desc': 'An unmanned store system built on Azure and tf.keras, integrating product recognition, facial verification, and payment. I handled model training, backend services, and the database pipeline — product recognition accuracy exceeded 95%.',
+        'proj2.title': 'My-paper — Smart Logistics Route Optimization',
+        'proj2.desc': "Master's thesis: solving a two-echelon, multi-depot, multi-day, multi-period, capacitated vehicle routing problem with simultaneous pickup and delivery (2E-MD-MD-MP-CVRP-SPD). The goal was to redesign the logistics distribution network while minimizing both total operating cost and fleet size. Proposed a Hybrid NSGA-II (HNSGA-II) combining 3D K-Means for customer clustering and satellite-location selection, the Clarke-Wright savings algorithm for higher-quality initial solutions, and Local Search for stronger local exploration. Submitted to Applied Soft Computing and awarded Top Honor at the 2025 18th Chong-Yue Paper Award.",
+        'proj3.title': 'Stock-Line-bot', 'proj3.desc': 'A LINE Bot project for stock information and alerts, serving as a foundation for automated investment data, interactive queries, and real-time notifications.',
+        'proj4.title': 'LLM-SOP', 'proj4.desc': 'A collection of LLM usage guides, SOPs, and knowledge-work methods to make AI collaboration workflows more standardized, repeatable, and easy to adopt.',
+        'edu.h2': 'Education, Certifications & Languages', 'edu.p': 'A background in information management, with cross-disciplinary foundations in programming, data, AI, and management problem modeling.',
+        'edu1.time': 'Sep 2023 — Aug 2025', 'edu1.title': 'National Kaohsiung University of Science and Technology | M.S. in Information Management', 'edu1.desc': 'Researched smart logistics, vehicle routing problems, multi-objective optimization, heuristic algorithms, and data analysis.',
+        'edu2.time': 'Sep 2019 — Jun 2023', 'edu2.title': 'National Penghu University of Science and Technology | B.S. in Information Management', 'edu2.desc': 'Self-taught Python and JavaScript during undergrad; completed an unmanned store capstone covering frontend, backend, database, AI models, and cloud API integration.',
+        'edu3.time': 'Certificates / Awards', 'edu3.title': 'OCA Java SE 8 · 2025 18th Chong-Yue Paper Award — Top Honor', 'edu3.desc': 'Language proficiency: English — Intermediate; Chinese — Fluent; Japanese — Basic.',
+        'contact.h2': "Let's Connect",
+        'contact.p': "I'm open to frontend, backend, full-stack, AI engineering, or algorithm-related opportunities. If you need someone who can combine system development, AI applications, and applied research, feel free to reach out.",
+        'contact.btn.email': 'Send email', 'contact.btn.resume104': '104 Resume'
+      }
+    };
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (I18N[lang][key] !== undefined) el.innerHTML = I18N[lang][key];
+      });
+      document.title = TITLES[lang];
+      document.querySelectorAll('.lang-btn').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+      try { localStorage.setItem('gc-lang', lang); } catch (e) {}
+      document.body.style.visibility = 'visible';
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang')); });
+    });
+
+    var saved = 'zh';
+    try { saved = localStorage.getItem('gc-lang') || 'zh'; } catch (e) {}
+    applyLang(saved);
+  </script>
+</body>
+</html>
