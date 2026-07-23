@@ -466,6 +466,15 @@
     .profile-about h2, .contact-details h2 { margin: 0 0 16px; color: #fff; font-size: 21px; }
     .profile-about p { margin: 0; color: #c2cdd2; font-size: 14px; line-height: 1.95; }
     .profile-about p + p { margin-top: 13px; }
+    .about-actions { margin-top: 24px; }
+    .btn.resume-download {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #172126;
+      box-shadow: 0 8px 22px rgba(0,0,0,.18);
+    }
+    .btn.resume-download:hover { border-color: #fff; background: #fff; color: var(--navy); }
+    .btn.resume-download svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .contact-details { padding-left: 28px; border-left: 1px solid rgba(255,255,255,.16); }
     .contact-line { display: block; padding: 7px 0; color: #c2cdd2; font-size: 13px; word-break: break-word; }
     a.contact-line:hover { color: var(--gold); }
@@ -761,6 +770,12 @@
         <article class="profile-about">
           <h2 data-i18n="about.h2">關於我</h2>
           <div data-i18n="about.body"><p>您好，我是鄭樺駿，目前擔任軟體工程師，主要負責智慧物流系統開發，包含 WMS、WCS、WES 及 LMS（標籤管理系統）的功能開發、系統整合與維護，並協助自動化物流設備串接，提升倉儲作業效率。</p><p>除了物流系統開發外，我也參與企業 AI 專案，建置以 Qwen3.5 為核心的本地大型語言模型（LLM）AI 助手，採用 GraphRAG 技術整合公司 SOP 與知識庫，提供企業內部智慧問答服務。</p><p>研究所期間，我的研究方向為物流路徑最佳化，設計混合式 NSGA-II 演算法解決多層次車輛路徑規劃問題，也因此培養了演算法設計與問題分析能力。</p><p>希望能將我在智慧物流、生成式 AI 與系統開發的實務經驗，運用於更多具有挑戰性的專案，持續創造價值並精進自己的技術能力。</p></div>
+          <div class="about-actions">
+            <a class="btn resume-download" href="output/pdf/Gary-Cheng-Resume.pdf" download="Gary-Cheng-Resume.pdf" type="application/pdf">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+              <span data-i18n="about.download">下載 PDF 履歷</span>
+            </a>
+          </div>
         </article>
         <aside class="contact-details">
           <h2 data-i18n="contact.details">聯絡資訊</h2>
@@ -808,6 +823,7 @@
         'label.about': '自我介紹', 'label.skills': '技術技能',
         'label.experience': '工作經歷', 'label.projects': '精選專案', 'label.education': '學歷與證照', 'label.contact': '聯絡方式',
         'about.h2': '關於我',
+        'about.download': '下載 PDF 履歷',
         'about.body': '<p>您好，我是鄭樺駿，目前擔任軟體工程師，主要負責智慧物流系統開發，包含 WMS、WCS、WES 及 LMS（標籤管理系統）的功能開發、系統整合與維護，並協助自動化物流設備串接，提升倉儲作業效率。</p><p>除了物流系統開發外，我也參與企業 AI 專案，建置以 Qwen3.5 為核心的本地大型語言模型（LLM）AI 助手，採用 GraphRAG 技術整合公司 SOP 與知識庫，提供企業內部智慧問答服務。</p><p>研究所期間，我的研究方向為物流路徑最佳化，設計混合式 NSGA-II 演算法解決多層次車輛路徑規劃問題，也因此培養了演算法設計與問題分析能力。</p><p>希望能將我在智慧物流、生成式 AI 與系統開發的實務經驗，運用於更多具有挑戰性的專案，持續創造價值並精進自己的技術能力。</p>',
         'facts.title': '個人檔案',
         'facts.traits.label': '特質', 'facts.traits.value': 'Java・Python・Vue.js・PHP・LLM',
@@ -848,6 +864,7 @@
         'label.about': 'About', 'label.skills': 'Tech Stack',
         'label.experience': 'Work Experience', 'label.projects': 'Selected Projects', 'label.education': 'Education & Certifications', 'label.contact': 'Get In Touch',
         'about.h2': 'About Me',
+        'about.download': 'Download PDF Resume',
         'about.body': "<p>Hi, I'm Gary Cheng. I currently work as a Software Engineer, primarily responsible for developing smart logistics systems — including WMS, WCS, WES, and LMS (Label Management System) — covering feature development, system integration, and maintenance, while also helping integrate automated warehouse equipment to improve operational efficiency.</p><p>Beyond logistics systems, I also work on enterprise AI projects. I built an on-premises AI assistant powered by the Qwen3.5 large language model, using GraphRAG to integrate company SOPs and knowledge bases into a natural-language Q&amp;A service for internal use.</p><p>During my master's program, my research focused on logistics route optimization. I designed a hybrid NSGA-II algorithm to solve multi-echelon vehicle routing problems, which strengthened my skills in algorithm design and problem analysis.</p><p>I hope to apply my hands-on experience in smart logistics, generative AI, and system development to more challenging projects — continuing to create value while sharpening my technical skills.</p>",
         'facts.title': 'Profile',
         'facts.traits.label': 'Traits', 'facts.traits.value': 'Java・Python・Vue.js・PHP・LLM',
