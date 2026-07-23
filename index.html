@@ -360,13 +360,85 @@
       clip-path: inset(0 -100vmax);
     }
     .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .project { display: flex; min-height: 280px; flex-direction: column; padding: 27px; background: #fff; box-shadow: 0 8px 26px rgba(30,48,56,.09); transition: transform .25s ease, box-shadow .25s ease; }
+    .project { display: flex; min-height: 470px; flex-direction: column; overflow: hidden; background: #fff; box-shadow: 0 8px 26px rgba(30,48,56,.09); transition: transform .25s ease, box-shadow .25s ease; }
     .project:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(30,48,56,.15); }
+    .project-visual {
+      position: relative;
+      display: block;
+      aspect-ratio: 16 / 8.4;
+      overflow: hidden;
+      background: #0d2330;
+      border-bottom: 1px solid var(--line);
+    }
+    .project-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .4s ease; }
+    .project:hover .project-visual img { transform: scale(1.025); }
+    .project-visual::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      background: linear-gradient(transparent, rgba(6,22,30,.34));
+      pointer-events: none;
+    }
+    .project-body { display: flex; flex: 1; flex-direction: column; padding: 24px 27px 27px; }
     .repo-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
     .project h3 { margin: 0; color: var(--ink); font-size: 19px; line-height: 1.35; }
     .tag { padding: 4px 8px; border-radius: 2px; color: #fff; background: var(--teal); font-size: 9px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
     .project p { margin: 18px 0; color: var(--muted); font-size: 13px; }
     .project .meta { margin-top: auto; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; padding-top: 17px; border-top: 1px solid var(--line); }
+    .project-link {
+      display: inline-flex;
+      min-height: 34px;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border: 1px solid #cfd6d9;
+      border-radius: 3px;
+      color: var(--navy-2);
+      background: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    .project-link:hover { color: #fff; background: var(--navy-2); border-color: var(--navy-2); }
+    .project-link.site { color: #172126; background: var(--gold); border-color: var(--gold); }
+    .project-link.site:hover { color: #fff; background: var(--teal); border-color: var(--teal); }
+    .paper-visual {
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 16% 30%, rgba(17,171,176,.22) 0 4px, transparent 5px),
+        radial-gradient(circle at 81% 27%, rgba(240,176,67,.24) 0 4px, transparent 5px),
+        linear-gradient(135deg, #132c39, #1f4658);
+    }
+    .paper-map { position: relative; width: 78%; height: 62%; }
+    .paper-map::before, .paper-map::after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      transform-origin: left center;
+    }
+    .paper-map::before { width: 84%; left: 8%; top: 42%; transform: rotate(-9deg); }
+    .paper-map::after { width: 66%; left: 18%; top: 55%; transform: rotate(18deg); }
+    .route-node {
+      position: absolute;
+      z-index: 1;
+      width: 18px;
+      height: 18px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 4px 14px rgba(0,0,0,.28);
+    }
+    .route-node:nth-child(1) { left: 5%; top: 29%; }
+    .route-node:nth-child(2) { left: 31%; top: 53%; background: var(--gold); }
+    .route-node:nth-child(3) { right: 30%; top: 21%; }
+    .route-node:nth-child(4) { right: 4%; top: 56%; background: var(--gold); }
+    .paper-label { position: absolute; left: 8%; bottom: 5%; color: rgba(255,255,255,.82); font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
 
     #contact {
       position: relative;
@@ -444,7 +516,7 @@
       .hero .btn { min-height: 40px; padding: 7px 12px; }
       .stats-row { margin-top: 38px; }
       .stat { width: 48px; height: 48px; }
-      .project { padding: 22px; }
+      .project-body { padding: 21px 22px 23px; }
       .profile-contact { grid-template-columns: 1fr; text-align: left; }
       .profile-avatar { width: 96px; height: 96px; margin-bottom: 4px; }
       .contact-details { grid-column: auto; }
@@ -591,38 +663,74 @@
         <span class="eyebrow-label" data-i18n="label.projects">精選專案</span>
       </div>
       <div class="projects">
-        <a class="project" href="https://github.com/arlong0828/Store.git" target="_blank" rel="noreferrer">
-          <div class="repo-head">
-            <h3 data-i18n="proj1.title">Store — 無人化商店實作</h3>
-            <span class="tag">AI / CV</span>
+        <article class="project">
+          <a class="project-visual" href="https://store.gary-cheng.com" target="_blank" rel="noreferrer" aria-label="開啟 Store 專案網站">
+            <img src="assets/projects/store.jpg" alt="Stride AI 無人化商店網站畫面" loading="lazy">
+          </a>
+          <div class="project-body">
+            <div class="repo-head">
+              <h3 data-i18n="proj1.title">Store — 無人化商店實作</h3>
+              <span class="tag">AI / CV</span>
+            </div>
+            <p data-i18n="proj1.desc">基於 Azure 與 tf.keras 的無人化商店系統，整合商品辨識、人臉驗證與支付流程。我負責模型訓練、後端服務與資料庫流程，商品辨識準確率達 95% 以上。</p>
+            <div class="meta"><span>Django</span><span>SQLite</span><span>Keras CNN</span><span>OpenCV</span><span>Azure Face API</span></div>
+            <div class="project-links">
+              <a class="project-link site" href="https://store.gary-cheng.com" target="_blank" rel="noreferrer"><span data-i18n="project.website">專案網站</span>&nbsp;↗</a>
+              <a class="project-link" href="https://github.com/arlong0828/Store" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
           </div>
-          <p data-i18n="proj1.desc">基於 Azure 與 tf.keras 的無人化商店系統，整合商品辨識、人臉驗證與支付流程。我負責模型訓練、後端服務與資料庫流程，商品辨識準確率達 95% 以上。</p>
-          <div class="meta"><span>Django</span><span>SQLite</span><span>Keras CNN</span><span>OpenCV</span><span>Azure Face API</span></div>
-        </a>
-        <a class="project" href="https://github.com/arlong0828/My-paper-.git" target="_blank" rel="noreferrer">
-          <div class="repo-head">
-            <h3 data-i18n="proj2.title">My-paper — 智慧物流路徑最佳化</h3>
-            <span class="tag">Research</span>
+        </article>
+        <article class="project">
+          <div class="project-visual paper-visual" role="img" aria-label="多據點物流路徑最佳化示意畫面">
+            <div class="paper-map" aria-hidden="true">
+              <span class="route-node"></span><span class="route-node"></span><span class="route-node"></span><span class="route-node"></span>
+            </div>
+            <span class="paper-label">Hybrid NSGA-II · Route Optimization</span>
           </div>
-          <p data-i18n="proj2.desc">碩士論文：解決「二層級、多倉庫、多日、多時期、容量限制且具同時取送需求之車輛路徑問題（2E-MD-MD-MP-CVRP-SPD）」。目標為重構物流配送網絡，同時最小化總營運成本與所需車輛數量。提出 Hybrid NSGA-II（HNSGA-II），結合 3D K-Means 分群定位衛星據點、Clarke-Wright 儲蓄法提升初始解品質、Local Search 強化局部探索；投稿 Applied Soft Computing，並獲 2025 第十八屆崇越論文大賞特優。</p>
-          <div class="meta"><span>2024/11–2025/06</span><span>HNSGA-II</span><span>3D K-Means</span><span>Clarke-Wright</span><span>VRP</span></div>
-        </a>
-        <a class="project" href="https://github.com/arlong0828/Stock-Line-bot" target="_blank" rel="noreferrer">
-          <div class="repo-head">
-            <h3 data-i18n="proj3.title">Stock-Line-bot</h3>
-            <span class="tag">Automation</span>
+          <div class="project-body">
+            <div class="repo-head">
+              <h3 data-i18n="proj2.title">My-paper — 智慧物流路徑最佳化</h3>
+              <span class="tag">Research</span>
+            </div>
+            <p data-i18n="proj2.desc">碩士論文：解決「二層級、多倉庫、多日、多時期、容量限制且具同時取送需求之車輛路徑問題（2E-MD-MD-MP-CVRP-SPD）」。目標為重構物流配送網絡，同時最小化總營運成本與所需車輛數量。提出 Hybrid NSGA-II（HNSGA-II），結合 3D K-Means 分群定位衛星據點、Clarke-Wright 儲蓄法提升初始解品質、Local Search 強化局部探索；投稿 Applied Soft Computing，並獲 2025 第十八屆崇越論文大賞特優。</p>
+            <div class="meta"><span>2024/11–2025/06</span><span>HNSGA-II</span><span>3D K-Means</span><span>Clarke-Wright</span><span>VRP</span></div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/arlong0828/My-paper-" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
           </div>
-          <p data-i18n="proj3.desc">股票資訊與提醒相關的 LINE Bot 專案，作為投資資訊自動化、互動式查詢與即時通知的基礎。</p>
-          <div class="meta"><span>LINE Bot</span><span>Stock Data</span><span>Automation</span></div>
-        </a>
-        <a class="project" href="https://github.com/arlong0828/LLM-SOP" target="_blank" rel="noreferrer">
-          <div class="repo-head">
-            <h3 data-i18n="proj4.title">LLM-SOP</h3>
-            <span class="tag">Knowledge</span>
+        </article>
+        <article class="project">
+          <a class="project-visual" href="https://github.com/arlong0828/Stock-Line-bot" target="_blank" rel="noreferrer" aria-label="開啟 Stock-Line-bot GitHub">
+            <img src="assets/projects/stock-line-bot.png" alt="Stock-Line-bot GitHub 專案預覽" loading="lazy">
+          </a>
+          <div class="project-body">
+            <div class="repo-head">
+              <h3 data-i18n="proj3.title">Stock-Line-bot</h3>
+              <span class="tag">Automation</span>
+            </div>
+            <p data-i18n="proj3.desc">股票資訊與提醒相關的 LINE Bot 專案，作為投資資訊自動化、互動式查詢與即時通知的基礎。</p>
+            <div class="meta"><span>LINE Bot</span><span>Stock Data</span><span>Automation</span></div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/arlong0828/Stock-Line-bot" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
           </div>
-          <p data-i18n="proj4.desc">整理 LLM 使用、SOP 與知識工作方法，讓 AI 協作流程更標準化、更容易複製與落地。</p>
-          <div class="meta"><span>LLM</span><span>SOP</span><span>Docs</span></div>
-        </a>
+        </article>
+        <article class="project">
+          <a class="project-visual" href="https://github.com/arlong0828/LLM-SOP" target="_blank" rel="noreferrer" aria-label="開啟 LLM-SOP GitHub">
+            <img src="assets/projects/llm-sop.png" alt="LLM-SOP GitHub 專案預覽" loading="lazy">
+          </a>
+          <div class="project-body">
+            <div class="repo-head">
+              <h3 data-i18n="proj4.title">LLM-SOP</h3>
+              <span class="tag">Knowledge</span>
+            </div>
+            <p data-i18n="proj4.desc">整理 LLM 使用、SOP 與知識工作方法，讓 AI 協作流程更標準化、更容易複製與落地。</p>
+            <div class="meta"><span>LLM</span><span>SOP</span><span>Docs</span></div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/arlong0828/LLM-SOP" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -717,6 +825,7 @@
         'job3.time': '2021/05 — 2021/07', 'job3.title': '售票／收銀人員｜統一超商股份有限公司', 'job3.desc': '櫃檯門市接待與需求服務、產品介紹及解說銷售。',
         'proj1.title': 'Store — 無人化商店實作',
         'proj1.desc': '基於 Azure 與 tf.keras 的無人化商店系統，整合商品辨識、人臉驗證與支付流程。我負責模型訓練、後端服務與資料庫流程，商品辨識準確率達 95% 以上。',
+        'project.website': '專案網站',
         'proj2.title': 'My-paper — 智慧物流路徑最佳化',
         'proj2.desc': '碩士論文：解決「二層級、多倉庫、多日、多時期、容量限制且具同時取送需求之車輛路徑問題（2E-MD-MD-MP-CVRP-SPD）」。目標為重構物流配送網絡，同時最小化總營運成本與所需車輛數量。提出 Hybrid NSGA-II（HNSGA-II），結合 3D K-Means 分群定位衛星據點、Clarke-Wright 儲蓄法提升初始解品質、Local Search 強化局部探索；投稿 Applied Soft Computing，並獲 2025 第十八屆崇越論文大賞特優。',
         'proj3.title': 'Stock-Line-bot', 'proj3.desc': '股票資訊與提醒相關的 LINE Bot 專案，作為投資資訊自動化、互動式查詢與即時通知的基礎。',
@@ -756,6 +865,7 @@
         'job3.time': 'May 2021 — Jul 2021', 'job3.title': 'Ticketing / Cashier | President Chain Store Corp. (7-Eleven)', 'job3.desc': 'Front-counter customer service and product consultation and sales.',
         'proj1.title': 'Store — Unmanned Store System',
         'proj1.desc': 'An unmanned store system built on Azure and tf.keras, integrating product recognition, facial verification, and payment. I handled model training, backend services, and the database pipeline — product recognition accuracy exceeded 95%.',
+        'project.website': 'Live website',
         'proj2.title': 'My-paper — Smart Logistics Route Optimization',
         'proj2.desc': "Master's thesis: solving a two-echelon, multi-depot, multi-day, multi-period, capacitated vehicle routing problem with simultaneous pickup and delivery (2E-MD-MD-MP-CVRP-SPD). The goal was to redesign the logistics distribution network while minimizing both total operating cost and fleet size. Proposed a Hybrid NSGA-II (HNSGA-II) combining 3D K-Means for customer clustering and satellite-location selection, the Clarke-Wright savings algorithm for higher-quality initial solutions, and Local Search for stronger local exploration. Submitted to Applied Soft Computing and awarded Top Honor at the 2025 18th Chong-Yue Paper Award.",
         'proj3.title': 'Stock-Line-bot', 'proj3.desc': 'A LINE Bot project for stock information and alerts, serving as a foundation for automated investment data, interactive queries, and real-time notifications.',
