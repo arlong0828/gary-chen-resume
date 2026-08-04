@@ -531,7 +531,7 @@
       .contact-details { grid-column: auto; }
     }
     @media print {
-      header, .hero::before, .actions { display: none !important; }
+      header, .hero::before, .actions, .resume-download, .scroll-arrow { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; }
       .container { width: 100%; }
       .hero { min-height: 0; padding: 20px 0; color: #000; background: #fff; }
@@ -790,10 +790,10 @@
           <h2 data-i18n="about.h2">關於我</h2>
           <div data-i18n="about.body"><p>您好，我是鄭樺駿，目前擔任軟體工程師，主要負責 WMS、WCS 與 LMS 等智慧物流系統開發、整合及維護，並串接自動化物流設備。</p><p>我也設計企業 SOPRAG 智能問答架構，以 Qwen3.6 35B 與 GraphRAG 全本地部署，結合知識圖譜、混合式檢索及可查核證據機制，在資料不外流的前提下提供企業知識問答。</p><p>研究所期間專注物流路徑最佳化，設計混合式 NSGA-II 演算法解決多層次車輛路徑問題；論文投稿 Applied Soft Computing，並獲 2025 第十八屆崇越論文大賞特優。</p><p>期望持續運用智慧物流、生成式 AI 與系統工程經驗，打造可靠且具實際價值的軟體產品。</p></div>
           <div class="about-actions">
-            <a class="btn resume-download" href="output/pdf/Gary-Cheng-Resume.pdf" download="Gary-Cheng-Resume.pdf" type="application/pdf">
+            <button class="btn resume-download" type="button" onclick="window.print()">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
-              <span data-i18n="about.download">下載 PDF 履歷</span>
-            </a>
+              <span data-i18n="about.download">列印／另存 PDF 履歷</span>
+            </button>
           </div>
         </article>
         <aside class="contact-details">
@@ -842,7 +842,7 @@
         'label.about': '自我介紹', 'label.skills': '技術技能',
         'label.experience': '工作經歷', 'label.projects': '精選專案', 'label.education': '學歷與證照', 'label.contact': '聯絡方式',
         'about.h2': '關於我',
-        'about.download': '下載 PDF 履歷',
+        'about.download': '列印／另存 PDF 履歷',
         'about.body': '<p>您好，我是鄭樺駿，目前擔任軟體工程師，主要負責 WMS、WCS 與 LMS 等智慧物流系統開發、整合及維護，並串接自動化物流設備。</p><p>我也設計企業 SOPRAG 智能問答架構，以 Qwen3.6 35B 與 GraphRAG 全本地部署，結合知識圖譜、混合式檢索及可查核證據機制，在資料不外流的前提下提供企業知識問答。</p><p>研究所期間專注物流路徑最佳化，設計混合式 NSGA-II 演算法解決多層次車輛路徑問題；論文投稿 Applied Soft Computing，並獲 2025 第十八屆崇越論文大賞特優。</p><p>期望持續運用智慧物流、生成式 AI 與系統工程經驗，打造可靠且具實際價值的軟體產品。</p>',
         'facts.title': '個人檔案',
         'facts.traits.label': '特質', 'facts.traits.value': 'Java・Python・Vue.js・PHP・LLM',
@@ -885,7 +885,7 @@
         'label.about': 'About', 'label.skills': 'Tech Stack',
         'label.experience': 'Work Experience', 'label.projects': 'Selected Projects', 'label.education': 'Education & Certifications', 'label.contact': 'Get In Touch',
         'about.h2': 'About Me',
-        'about.download': 'Download PDF Resume',
+        'about.download': 'Print / Save Resume as PDF',
         'about.body': "<p>Hi, I'm Gary Cheng, a Software Engineer developing, integrating, and maintaining smart logistics systems including WMS, WCS, and LMS, along with automated warehouse equipment.</p><p>I designed an on-premises enterprise SOPRAG assistant powered by Qwen3.6 35B and GraphRAG, combining knowledge graphs, hybrid retrieval, and traceable evidence while keeping company data private.</p><p>My master's research focused on logistics route optimization using a hybrid NSGA-II algorithm. The work was submitted to Applied Soft Computing and received Top Honor at the 2025 18th Chong-Yue Paper Award.</p><p>I aim to apply my experience in smart logistics, generative AI, and systems engineering to build reliable, high-impact software.</p>",
         'facts.title': 'Profile',
         'facts.traits.label': 'Traits', 'facts.traits.value': 'Java・Python・Vue.js・PHP・LLM',
